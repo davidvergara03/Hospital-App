@@ -1,0 +1,79 @@
+:root { --bg:#0b1020; --card:#121a36; --muted:#9aa4b2; --fg:#e8ecf2; --pri:#4f7cff; --ok:#20c997; --warn:#f59f00; --err:#ff6b6b; }
+* { box-sizing: border-box; }
+html,body { margin:0; padding:0; background:linear-gradient(135deg,#0b1020,#1a2347); color:var(--fg); font-family:system-ui,-apple-system,Segoe UI,Roboto; min-height:100vh; }
+a { color:inherit; text-decoration:none; }
+.hidden { display:none!important; }
+.topbar { display:flex; gap:24px; align-items:center; padding:12px 16px; backdrop-filter:blur(8px); position:sticky; top:0; z-index:10; background:rgba(18,26,54,.6); border-bottom:1px solid rgba(255,255,255,.08); }
+.brand { font-weight:700; letter-spacing:.5px; }
+.topbar nav a { padding:8px 10px; border-radius:10px; transition:.2s; }
+.topbar nav a:hover { background:rgba(255,255,255,.08); }
+main { padding:24px; max-width:1100px; margin:0 auto; }
+h1 { margin:0 0 16px; font-size:28px; }
+h3 { margin:0 0 6px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin:16px 0; }
+.tile { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:16px; padding:16px; transition:.2s; }
+.tile:hover { transform:translateY(-2px); border-color:rgba(255,255,255,.2); }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+.card { background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.04)); border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:18px; }
+.card.narrow { max-width:420px; margin:24px auto; }
+label { display:block; margin:10px 0; }
+input, select, button { width:100%; padding:10px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.06); color:var(--fg); }
+input::placeholder { color:var(--muted); }
+.row { display:flex; align-items:center; gap:10px; }
+.gap { gap:12px; margin:12px 0; }
+.btn-full { width:100%; }
+.primary { background:var(--pri); border:1px solid transparent; }
+.danger { background:var(--err); border:1px solid transparent; }
+.muted { color:var(--muted); }
+.small { font-size:12px; }
+
+.table { margin-top:12px; border:1px solid rgba(255,255,255,.1); border-radius:12px; overflow:hidden; }
+.table .header, .table .row { display:grid; gap:0; }
+.table .header { background:rgba(255,255,255,.08); font-weight:600; }
+.table .row:hover { background:rgba(255,255,255,.04); }
+.table span { padding:10px 12px; border-bottom:1px solid rgba(255,255,255,.06); white-space:nowrap!important; overflow:hidden!important; text-overflow:ellipsis; }
+
+.remember-row{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:8px;
+  width:100%;
+  margin-top:4px;
+}
+
+.remember-row input[type="checkbox"]{
+  width:auto;
+  min-width:16px;
+  height:16px;
+  margin:0;
+}
+
+.remember-row span{
+  white-space:nowrap;
+}
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:50}
+.modal{background:var(--card);border:1px solid rgba(255,255,255,.12);border-radius:16px;min-width:320px;max-width:520px;width:90%;padding:18px 18px 12px}
+.form-grid{display:grid;grid-template-columns:1fr;gap:10px;margin:10px 0}
+.form-grid label{display:block}
+.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:8px}
+.modal-actions .primary{min-width:120px}
+.field-error{
+  color:#ff6b6b;
+  font-size:12px;
+  margin-top:4px;
+  display:block;
+}
+input.error{
+  border-color:#ff6b6b!important;
+}
+
+.topbar nav { flex: 1; }
+
+.userbox{ margin-left:auto; position:relative; }
+#userbtn{ display:flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); color:var(--fg); }
+#userbtn:hover{ background:rgba(255,255,255,.12); }
+
+.dropdown{ position:absolute; right:0; top:44px; background:var(--card); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:8px; min-width:180px; box-shadow:0 10px 30px rgba(0,0,0,.4); }
+.dropdown button, .dropdown a{ width:100%; padding:10px 12px; border-radius:10px; background:transparent; border:1px solid rgba(255,255,255,.12); }
+.dropdown button:hover, .dropdown a:hover{ background:rgba(255,255,255,.08); }

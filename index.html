@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Hospital App Prototype</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <header class="topbar">
+    <div class="brand">Hospital App</div>
+    <nav id="top-nav" class="hidden">
+        <a href="#/dashboard">Inicio</a>
+        <a data-role="his" href="#/pacientes">Pacientes</a>
+        <a data-role="his" href="#/ordenes">Órdenes</a>
+        <a data-role="lab" href="#/laboratorio">Laboratorio</a>
+        <a data-role="far" href="#/farmacia">Farmacia</a>
+        <a data-role="fac" href="#/facturacion">Facturación</a>
+        <a href="#/auditoria">Auditoría</a>
+    </nav>
+
+    <div id="userbox" class="userbox hidden">
+        <button id="userbtn"><span id="userlabel"></span> ▾</button>
+        <div id="userdrop" class="dropdown hidden">
+        <button id="logout-top" class="danger btn-full">Cerrar sesión</button>
+        </div>
+    </div>
+    </header>
+
+
+  <main id="app"></main>
+
+  <template id="tpl-login">
+    <section class="card narrow">
+      <h1>Ingreso</h1>
+      <form id="login-form">
+        <label>Usuario
+          <input type="text" id="user" required>
+          <span class="field-error" id="user-err"></span>
+        </label>
+        <label>Contraseña
+          <input type="password" id="pass" required>
+          <span class="field-error" id="pass-err"></span>
+        </label>
+        <label class="remember-row">
+          <input type="checkbox" id="remember">
+          <span>Recordar sesión</span>
+        </label>
+        <button type="submit" class="primary btn-full">Entrar</button>
+        <p class="muted small">Usuarios demo: admin/admin, his/his, lab/lab, far/far, fac/fac</p>
+      </form>
+    </section>
+  </template>
+
+  <template id="tpl-dashboard">
+    <section>
+      <h1>Panel</h1>
+      <div class="grid">
+        <a class="tile" data-role="his" href="#/pacientes"><h3>Pacientes</h3><p>Alta y consulta</p></a>
+        <a class="tile" data-role="his" href="#/ordenes"><h3>Órdenes</h3><p>Crear y ver</p></a>
+        <a class="tile" data-role="lab" href="#/laboratorio"><h3>Laboratorio</h3><p>Resultados</p></a>
+        <a class="tile" data-role="far" href="#/farmacia"><h3>Farmacia</h3><p>Dispensación</p></a>
+        <a class="tile" data-role="fac" href="#/facturacion"><h3>Facturación</h3><p>Prefactura</p></a>
+        <a class="tile" href="#/auditoria"><h3>Auditoría</h3><p>Bitácora</p></a>
+      </div>
+      <div class="cards">
+        <div class="card"><h3>KPI Pacientes</h3><p id="kpi-pac">0</p></div>
+        <div class="card"><h3>KPI Órdenes</h3><p id="kpi-ord">0</p></div>
+        <div class="card"><h3>KPI Dispensaciones</h3><p id="kpi-disp">0</p></div>
+      </div>
+    </section>
+  </template>
+
+  <template id="tpl-placeholder">
+    <section>
+      <h1 id="ph-title"></h1>
+      <div class="row gap">
+        <button id="btn-add" class="primary">Agregar</button>
+        <input id="q" placeholder="Buscar">
+      </div>
+      <div id="list" class="table"></div>
+    </section>
+  </template>
+
+  <template id="tpl-auditoria">
+    <section>
+      <h1>Auditoría</h1>
+      <div id="audit-list" class="table"></div>
+    </section>
+  </template>
+
+  <template id="tpl-perfil">
+    <section class="card narrow">
+      <h1>Perfil</h1>
+      <div id="profile-box"></div>
+      <button id="logout" class="danger btn-full">Cerrar sesión</button>
+    </section>
+  </template>
+
+    <template id="tpl-modal">
+    <div class="modal-backdrop" id="modal-backdrop">
+        <div class="modal">
+        <h2 id="modal-title"></h2>
+        <form id="modal-form" class="form-grid">
+        </form>
+        <div class="modal-actions">
+            <button id="modal-cancel" type="button">Cancelar</button>
+            <button id="modal-save" class="primary" type="submit" form="modal-form">Guardar</button>
+        </div>
+        </div>
+    </div>
+    </template>
+
+
+  <script src="app.js"></script>
+</body>
+</html>
