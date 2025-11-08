@@ -62,13 +62,15 @@ const routes = {
   "/auditoria": renderAuditoria,};
 
 function guard(path) {
-  if (path === "/login") return true;
-  if (!session()) {
-    location.hash = "#/login";
-    return false;
+  const s = session();
+  if (path === "/login") {
+    if (s) { location.replace("#/dashboard"); return false; }
+    return true;
   }
+  if (!s) { location.replace("#/login"); return false; }
   return true;
 }
+
 
 function syncNav() {
   const nav = document.getElementById("top-nav");
@@ -130,7 +132,7 @@ function renderLogin() {
     }
     setSession(found, r);
     audit("login", found.username);
-    location.hash = "#/dashboard";
+    location.replace("#/dashboard");
   });
 }
 
@@ -359,9 +361,9 @@ function renderPerfil() {
     <p><strong>Rol:</strong> ${s.role}</p>
   `;
   document.getElementById("logout").addEventListener("click", () => {
-    audit("logout", s.username);
+    audit("logout", s?.username || "-");
     clearSession();
-    location.hash = "#/login";
+    location.replace("#/login");
   });
 }
 
